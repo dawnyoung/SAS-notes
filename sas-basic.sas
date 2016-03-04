@@ -125,3 +125,66 @@ libname newlib "/home/dongyangli0/my notes/";
 proc contents data=newlib.addhealth;
 run;
 
+
+
+
+
+
+*    Basic Funtions;
+*
+#numeric
+abs(argument): returns the absolute value of argument
+exp(): returns the number e to the power of argument
+int(): returns the integer portion
+log(): natural log
+log10(): base 10 log
+round(argument, round off unit): rounds argument to the nearest value of the round-off-unit.
+                                 for example: round(3.12, 0.1);*return the value 3.1
+sqrt(): square root
+
+arcos(): arccos
+arsin(): arcsin
+atan(): arctan
+cosh()； hyperbolic cosine
+sinh(): hyperbolic sine
+tanh(): hyperbolic tan
+
+
+
+#character
+left(): left aligns
+right(): right aligns
+substr(argument, position, n): extracts a substring of argument beginning with the 
+                               character at specified position and having length n.
+trim(): romoves trailing blanks from argument
+
+
+
+
+#probability function
+poisson(m, n): p(x <= n), where x is a poisson variable with mean m
+probbnml(p, n, m): p(x <= m), where x is binomial, p is the prob of each trial. n is the 
+                   number of trials
+probchi(x, df): p(x <= x), x is chi-square with df as degrees of freedom
+cinv(p, df): return pth quantile from the chi-square distribution
+probf(x, ndf, ddf): p(x <= x), f distribution
+finv(p, ndf, ddf): pth quantile from f distribution
+probhyper(N, K, n, x): p(x <= x), hypergeometric random variable. N is population size.
+                       K is the number in the population with a special characteristic.
+                       n is sample size.
+probnorm(x): p(x <= x), normal distribution, miu=0, sigma=1
+probit(p): p th quantile of the standard normal distribution
+probt(x, df): p(x <= x), random variable with df as degrees of freedom
+tinv(p, df): p th quantile of the t distribution
+
+
+
+#descriptive statistics
+mean(): mean
+std(): standard deviation
+sum(): sum
+min(): minimum value
+max(): maximum value
+median(): median
+iqr(): interquartile range
+range(): range
