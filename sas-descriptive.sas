@@ -1,6 +1,6 @@
 data addhealth;
 infile "/home/dongyangli0/my notes/myowncodebook.csv" dlm=",";
-input AID BIO_SEX H1GH1 H1GH59A H1GH59B H1GH60; *Select variables of interest;
+input AID BIO_SEX H1GH1 H1GH2 H1GH59A H1GH59B H1GH60; *Select variables of interest;
 run;
 
 libname newlib "/home/dongyangli0/my notes/";
@@ -13,6 +13,7 @@ data addhlth; set addhealth;
 *add label;
 label BIO_SEX = "gender"
       H1GH1 = "general health"
+      H1GH2 = "frequency of headache"
       H1GH59A = "height in feet"
       H1GH59B = "height in inch"
       H1GH60 = "weight";
@@ -72,4 +73,20 @@ freq H1GH1; /*treat values of this variable as frequency, as integer*/
 id AID;
 run;
 
+
+
+* generates tables for data that are in categories;
+proc freq data=addhlth; 
+tables BIO_SEX BIO_SEX * H1GH1 BIO_SEX*H1GH2 H1GH1 * H1GH2/ alpha=0.01;
+title "tables";
+run;
+
+proc freq data=addhlth; 
+tables BIO_SEX * H1GH1 BIO_SEX*H1GH2 H1GH1 * H1GH2/ alpha=0.01;
+title "tables";
+weight H1GH60;
+run;
+* provides a weight for each observation in the input data set.
+assumes each observation represents n observations, where n is the value of this weight
+variable;
 
