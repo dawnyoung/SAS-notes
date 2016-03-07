@@ -1,14 +1,10 @@
-data addhealth;
-infile "/home/dongyangli0/my notes/myowncodebook.csv" dlm=",";
-input AID BIO_SEX H1GH1 H1GH2 H1GH59A H1GH59B H1GH60; *Select variables of interest;
+* Load data;
+proc import
+  datafile= "/home/dongyangli0/my notes/myowncodebook.csv"
+  out = work.addhealth
+  dbms =csv
+  replace;
 run;
-
-libname newlib "/home/dongyangli0/my notes/";
-data newlib.addhealth; *use two part data name: libname.datasetname;
-set addhealth;
-run;
-
-
 data addhlth; set addhealth;
 *add label;
 label BIO_SEX = "gender"
